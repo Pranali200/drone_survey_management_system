@@ -1,19 +1,18 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const missionSchema = new mongoose.Schema({
-    name:String,
-    droneId:{
-        type:mongoose.Schema.Types.ObjectId, ref:"Drone"
+    name: String,
+    droneId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Drone"
     },
-    area : Object,
-    waypoints :[[Number]],
-    altitude: Number, 
+    area: Object,
+    waypoints: [[Number]],
+    altitude: Number,
     overlap: Number,
-    status: {type:String, enum:["planned", "in_progress", "completed", "aborted"], default:"planned"},
-    progress:Number,
-    createdAt : { type:Date, default:Date.now},
-})
+    status: { type: String, enum: ["planned", "in_progress", "completed", "aborted"], default: "planned" },
+    progress: Number,
+    createdAt: { type: Date, default: Date.now },
+});
 
-module.exports = mongoose.model("Mission", missionSchema)
-
-
+export default mongoose.model("Mission", missionSchema);

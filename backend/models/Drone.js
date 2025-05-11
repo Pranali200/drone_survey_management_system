@@ -10,4 +10,5 @@ const droneSchema = new mongoose.Schema({
 });
 
 droneSchema.index({ location:"2dsphere"});
-module.export = mongoose.model("Drone", droneSchema)
+module.exports = mongoose.model("Drone", droneSchema)
+
