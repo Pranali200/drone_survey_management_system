@@ -1,21 +1,27 @@
-import { useEffect, useState } from "react";
-import axios from "../api/axiosConfig";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
+import React, { useEffect, useState } from 'react';
+import api from '../api/axiosConfig';
 
-export default function SurveyReport() {
-  const [data, setData] = useState([]);
+const SurveyReports = () => {
+  const [reports, setReports] = useState([]);
 
   useEffect(() => {
-    axios.get("/missions/stats").then((res) => setData(res.data));
+    const fetchReports = async () => {
+      const { data } = await api.get('/reports');
+      setReports(data);
+    };
+    fetchReports();
   }, []);
 
   return (
-    <BarChart width={600} height={300} data={data}>
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="missionName" />
-      <YAxis />
-      <Tooltip />
-      <Bar dataKey="distanceCovered" fill="#8884d8" />
-    </BarChart>
+    <div>
+      <h2>Survey Reports</h2>
+      <ul>
+        {reports.map((r) => (
+          <li key={r._id}>{r.summary} - Duration: {r.duration} mins</li>
+        ))}
+      </ul>
+    </div>
   );
-}
+};
+
+export default SurveyReports;

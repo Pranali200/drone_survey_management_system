@@ -1,16 +1,20 @@
-import React from "react";
-import AppRoutes from "./routes/AppRoutes";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import MissionPlanner from './components/MissionPlanner';
+import DroneDashboard from './components/DroneDashboard';
+import MissionMonitor from './components/MissionMonitor';
+import SurveyReports from './components/SurveyReports';
 
 function App() {
   return (
-    <div className="App">
-      <header>
-        <h1>Drone Survey Management System</h1>
-      </header>
-      <main>
-        <AppRoutes />
-      </main>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<MissionPlanner />} />
+        <Route path="/drones" element={<DroneDashboard />} />
+        <Route path="/monitor" element={<MissionMonitor />} />
+        <Route path="/reports" element={<SurveyReports />} />
+      </Routes>
+    </Router>
   );
 }
 

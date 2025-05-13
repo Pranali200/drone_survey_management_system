@@ -1,29 +1,25 @@
-import { useState } from "react";
-import axios from "../api/axiosConfig";
+import React, { useState } from 'react';
+import api from '../api/axiosConfig';
 
-export default function MissionPlanner() {
-  const [form, setForm] = useState({
-    name: "",
-    altitude: "",
-    pattern: "crosshatch",
-  });
+const MissionPlanner = () => {
+  const [mission, setMission] = useState({ name: '', area: '', path: '', altitude: 100 });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios.post("/missions", form).then((res) => {
-      alert("Mission created!");
-    });
+    await api.post('/missions', mission);
+    alert('Mission Created');
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input placeholder="Mission Name" onChange={(e) => setForm({ ...form, name: e.target.value })} />
-      <input placeholder="Altitude" type="number" onChange={(e) => setForm({ ...form, altitude: e.target.value })} />
-      <select onChange={(e) => setForm({ ...form, pattern: e.target.value })}>
-        <option value="crosshatch">Crosshatch</option>
-        <option value="perimeter">Perimeter</option>
-      </select>
-      <button type="submit">Create Mission</button>
+      <h2>Create Mission</h2>
+      <input type="text" placeholder="Name" onChange={(e) => setMission({ ...mission, name: e.target.value })} />
+      <input type="text" placeholder="Area" onChange={(e) => setMission({ ...mission, area: e.target.value })} />
+      <input type="text" placeholder="Path" onChange={(e) => setMission({ ...mission, path: e.target.value })} />
+      <input type="number" placeholder="Altitude" onChange={(e) => setMission({ ...mission, altitude: e.target.value })} />
+      <button type="submit">Create</button>
     </form>
   );
-}
+};
+
+export default MissionPlanner;

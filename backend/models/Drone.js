@@ -1,14 +1,10 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+
 const droneSchema = new mongoose.Schema({
-        name: String,
-        status: {type:String, enum: ["available","in-mission","maintenance"], default :"available"},
-        battery: Number,
-        location:{
-            type:{type:String, enum: ["Point"], default:"Point"},
-            coordinates: [Number]
-        }
+  droneId: String,
+  model: String,
+  status: { type: String, default: "Available" },
+  battery: Number,
 });
 
-droneSchema.index({ location:"2dsphere"});
-module.exports = mongoose.model("Drone", droneSchema)
-
+export default mongoose.model("Drone", droneSchema);
