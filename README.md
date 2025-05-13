@@ -1,57 +1,57 @@
 Drone Survey Management System
 A scalable platform to plan, manage, and monitor autonomous drone surveys across multiple global sites. Built using React for the frontend and Node.js (with WebSocket support) for the backend.
 
-Key Features
-Mission Planning
-Define survey areas & waypoints
+🚀 Key Features
+🗺️ Mission Planning
+Define survey areas and waypoints
 
-Configure altitude, overlap %, and patterns
+Configure altitude, overlap percentage, and flight patterns
 
-Set sensor collection frequency
+Set sensor data collection frequency
 
-Fleet Management Dashboard
-Organization-wide drone inventory
+🛩️ Fleet Management Dashboard
+Organization-wide drone inventory tracking
 
-Real-time status: available, in-mission
+Real-time drone statuses: Available, In-Mission
 
-Battery levels & vitals
+Battery levels and drone vitals display
 
-Real-Time Monitoring
-Live mission path visualization on map
+📡 Real-Time Monitoring
+Live mission path visualization on interactive map
 
-Mission control: pause/resume/abort
+Mission control: Pause, Resume, Abort options
 
-Progress tracker & status updates
+Live progress tracking and mission status updates
 
-Reporting & Analytics
-Individual survey details (duration, coverage, etc.)
+📊 Reporting & Analytics
+Survey-specific reports (duration, coverage, performance)
 
-Org-wide statistics (missions completed, active drones)
+Organization-wide analytics (missions completed, active drones, etc.)
 
-Tech Stack
+🧰 Tech Stack
 Tech	Description
 React	Frontend library
 Node.js + Express	Backend REST APIs
-Socket.IO	Real-time drone updates
-MongoDB	NoSQL Database
-Leaflet	Map integration for monitoring
+Socket.IO	Real-time communication
+MongoDB	NoSQL database
+Leaflet	Interactive map integration
 
-Installation Guide
-Backend
+🛠️ Installation Guide
+Backend Setup
 bash
 Copy
 Edit
 cd server
 npm install
 npm run dev
-Frontend
+Frontend Setup
 bash
 Copy
 Edit
 cd client
 npm install
 npm run dev
-Folder Structure
+📁 Folder Structure
 pgsql
 Copy
 Edit
@@ -69,16 +69,18 @@ client/
 │   ├── pages/
 │   ├── services/
 │   └── App.jsx
-Trade-offs & Architecture
-Prioritized mission planning, fleet management, and real-time monitoring over video/3D data generation (out of scope).
+⚙️ Trade-offs & Architecture
+Focused on mission planning, fleet management, and real-time monitoring.
 
-Used MongoDB for flexible data modeling of missions & reports.
+Excluded video streaming or 3D terrain generation to maintain simplicity and scope.
 
-Real-time data via Socket.IO, avoiding heavy polling.
+Chose MongoDB for dynamic mission/report schemas.
 
-Safety & Scalability Considerations
-Mission abort/resume capabilities ensure fallback control.
+Used Socket.IO to avoid inefficient HTTP polling.
 
-Modular REST + WebSocket architecture supports horizontal scaling.
+🔐 Safety & Scalability Considerations
+Supports mission pause/resume/abort for robust control.
 
-Can integrate authentication and drone APIs in the future.
+Modular REST + WebSocket architecture for easy horizontal scaling.
+
+Future-ready: easily extendable to include authentication and direct drone API integration.
